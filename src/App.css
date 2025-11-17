@@ -5,7 +5,13 @@
   text-align: center;
 }
 
-#todayHeading {
+#today-heading {
 	font-weight: 800;
 	font-size: 4em;
+}
+
+#sidepanel-open-button {
+	position: fixed;
+	top: 1em;
+	right: 1em;
 }

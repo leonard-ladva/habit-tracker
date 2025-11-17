@@ -1,7 +1,10 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import "./App.css";
+import Sidepanel from "./components/Sidepanel";
 
 function App() {
+    const [sidepanelOpen, setSidepanelOpen] = useState(false);
+
   const todayString = useMemo(() => {
     const date = new Date();
     return date.toLocaleDateString("en-US", {
@@ -13,7 +16,9 @@ function App() {
 
   return (
     <>
-      <h1 id="todayHeading">{todayString}</h1>
+      <button id="sidepanel-open-button" onClick={() => setSidepanelOpen(true)}>Edit</button>
+      <h1 id="today-heading">{todayString}</h1>
+      <Sidepanel isOpen={sidepanelOpen} />
     </>
   );
 }
