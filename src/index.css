@@ -14,6 +14,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+button {
+	background-color: #f5f5f5;
+	padding: .25rem .75rem;
+	border-radius: .5rem;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
