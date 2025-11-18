@@ -32,7 +32,7 @@ function Sidepanel(props: PropsWithChildren<SidepanelProps>) {
       />
       {/* drawer panel */}
       <div
-        className={`fixed right-0 top-0 h-full w-64 bg-white shadow-lg transition-transform duration-300 ${
+        className={`fixed right-0 top-0 h-full w-2/5 bg-white shadow-lg transition-transform duration-300 ${
           props.isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
