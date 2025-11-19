@@ -6,7 +6,6 @@ export const store = configureStore({
   reducer: {
 	habits: habitsReducer
   },
-  devTools: true
 })
 
 // Infer the type of `store`

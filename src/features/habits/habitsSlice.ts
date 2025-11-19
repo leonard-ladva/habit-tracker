@@ -17,7 +17,10 @@ export interface HabitsState {
 
 // Define the initial value for the slice state
 const initialState: HabitsState = {
-  value: [],
+  value: [
+	{name: 'Workout', color: '#f51d1d', logs: []}, 
+	{name: 'Journal', color: '#5aff02', logs: []}
+],
   status: 'idle'
 }
 
