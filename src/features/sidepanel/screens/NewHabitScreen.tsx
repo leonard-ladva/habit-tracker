@@ -1,7 +1,7 @@
 import type { ScreenProps } from "./types";
-import "./HabitNewScreen.css";
+import "./NewHabitScreen.css";
 
-function HabitNewScreen(props: ScreenProps) {
+function NewHabitScreen(props: ScreenProps) {
   return (
     <>
       <h2>New Habit</h2>
@@ -26,4 +26,4 @@ function HabitNewScreen(props: ScreenProps) {
   );
 }
 
-export default HabitNewScreen;
+export default NewHabitScreen;

@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
 import "./App.css";
-import Sidepanel from "./components/Sidepanel/Sidepanel";
-
+import Sidepanel from "./features/sidepanel/Sidepanel";
 function App() {
   const [sidepanelOpen, setSidepanelOpen] = useState(false);
 

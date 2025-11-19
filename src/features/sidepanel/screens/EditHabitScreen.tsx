@@ -1,6 +1,6 @@
 import type { ScreenProps } from "./types";
 
-function HabitsEditScreen(props: ScreenProps) {
+function EditHabitScreen(props: ScreenProps) {
   return (
     <>
       <h2>Reading</h2>
@@ -10,4 +10,4 @@ function HabitsEditScreen(props: ScreenProps) {
   );
 }
 
-export default HabitsEditScreen;
+export default EditHabitScreen;

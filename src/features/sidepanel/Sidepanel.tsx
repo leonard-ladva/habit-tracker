@@ -1,9 +1,9 @@
 import { useState, type JSX, type PropsWithChildren } from "react";
 import "./Sidepanel.css";
-import HabitsListScreen from "./Screens/HabitsListScreen";
-import HabitNewScreen from "./Screens/HabitNewScreen";
-import HabitsEditScreen from "./Screens/HabitsEditScreen";
-import type { Screen } from "./Screens/types";
+import ListHabitsScreen from "./screens/ListHabitsScreen";
+import NewHabitScreen from "./screens/NewHabitScreen";
+import EditHabitScreen from "./screens/EditHabitScreen";
+import type { Screen } from "./screens/types";
 
 type SidepanelProps = {
   isOpen: boolean;
@@ -14,9 +14,9 @@ function Sidepanel(props: PropsWithChildren<SidepanelProps>) {
   const [screen, setScreen] = useState<Screen>("list");
 
   const screens: Record<Screen, JSX.Element> = {
-    list: <HabitsListScreen goTo={setScreen} />,
-    new: <HabitNewScreen goTo={setScreen} />,
-    edit: <HabitsEditScreen goTo={setScreen} />,
+    list: <ListHabitsScreen goTo={setScreen} />,
+    new: <NewHabitScreen goTo={setScreen} />,
+    edit: <EditHabitScreen goTo={setScreen} />,
   };
 
   return (
