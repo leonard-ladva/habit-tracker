@@ -20,9 +20,7 @@ function ListHabitsScreen(props: ScreenProps) {
     <>
       <h2>Edit Habits</h2>
       <ul className="gap-none w-4/5">{renderedHabits}</ul>
-      <button onClick={() => props.goTo("new")} className="w-1/6">
-        New
-      </button>
+      <button onClick={() => props.goTo("new")}>New</button>
     </>
   );
 }

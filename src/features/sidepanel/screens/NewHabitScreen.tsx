@@ -9,18 +9,18 @@ function NewHabitScreen(props: ScreenProps) {
     const color = formData.get("color") as string;
     console.log(name, color);
     store.dispatch(
-      habitsSlice.actions.create({ name: name, color: color, logs: [] })
+      habitsSlice.actions.create({ name: name, color: color, logs: [] }),
     );
+    // after submit go to list
+    props.goTo("list");
   }
 
   return (
     <>
       <h2>New Habit</h2>
-      <button onClick={() => props.goTo("edit")}>Edit</button>
-      <button onClick={() => props.goTo("list")}>List</button>
       <form
         action={submit}
-        className="flex flex-col gap-1 w-4/5 m-auto items-start"
+        className="m-auto flex w-4/5 flex-col items-start gap-1"
       >
         <label htmlFor="name">Name</label>
         <input type="text" name="name" placeholder="Habit Name" />
@@ -34,7 +34,9 @@ function NewHabitScreen(props: ScreenProps) {
         <div className="input-box">
           <input type="color" name="color" />
         </div>
-        <button type="submit">Save</button>
+        <button type="submit" className="self-center">
+          Save
+        </button>
       </form>
     </>
   );
