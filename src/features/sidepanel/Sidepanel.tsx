@@ -25,31 +25,33 @@ function Sidepanel(props: PropsWithChildren<SidepanelProps>) {
       <div
         className={`fixed inset-0 bg-black/50 transition-opacity ${
           props.isOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
+            ? "pointer-events-auto opacity-100"
+            : "pointer-events-none opacity-0"
         }`}
         onClick={() => props.setIsOpen(false)}
       />
-      {/* drawer panel */}
+      {/*  idepanel */}
       <div
-        className={`fixed right-0 top-0 h-full w-2/5 bg-white shadow-lg transition-transform duration-300 ${
+        className={`fixed top-0 right-0 h-full w-2/5 flex-col bg-white shadow-lg transition-transform duration-300 ${
           props.isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        {/* content */}
-        <button
-          className="back-button"
-          onClick={() => {
-            if (screen == "list") {
-              props.setIsOpen(false);
-            } else {
-              setScreen("list");
-            }
-          }}
-        >
-          Back
-        </button>
-        {screens[screen]}
+        <div className="mt-12 flex flex-col items-center gap-4">
+          {/* content */}
+          <button
+            className="back-button"
+            onClick={() => {
+              if (screen == "list") {
+                props.setIsOpen(false);
+              } else {
+                setScreen("list");
+              }
+            }}
+          >
+            Back
+          </button>
+          {screens[screen]}
+        </div>
       </div>
     </>
   );
