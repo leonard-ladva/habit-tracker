@@ -8,6 +8,7 @@ function ListHabitsScreen(props: ScreenProps) {
     <li
       onClick={() => props.goTo("edit")}
       className="flex h-12 list-none items-center gap-4 border-b border-gray-200 bg-neutral-100 px-4 py-2 text-2xl font-extrabold first:rounded-t-2xl last:rounded-b-2xl last:border-none hover:bg-neutral-200"
+      key={habit.name}
     >
       <div
         className={"h-4 w-4 rounded-full"}

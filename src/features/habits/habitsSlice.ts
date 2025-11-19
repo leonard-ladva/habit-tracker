@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 type ISODate = string;
-type Habit = {
+export interface Habit {
 	name: string,
 	color: string,
 	logs: ISODate[],
