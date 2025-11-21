@@ -1,11 +1,38 @@
+import { store } from "../../app/store";
 import MonthlyView from "../habits/monthlyView";
 
-function Overview() {
-  const newHabit = { name: "hello", color: "#f5f6f8", logs: [] };
+export interface OverviewProps {
+  currentDate: Date;
+}
+
+function daysInAMonth(date: Date) {
+  return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+}
+
+function Overview(props: OverviewProps) {
+  const todayString = props.currentDate.toLocaleDateString("en-US", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+  });
+
+  const habits = store.getState().habits.value;
+  const daysInMonth = daysInAMonth(props.currentDate);
+
+  const renderedMonths = habits.map((habit) => (
+    <MonthlyView
+      habit={habit}
+      daysInMonth={daysInMonth}
+	  currentDate={props.currentDate}
+      key={habit.name}
+    ></MonthlyView>
+  ));
+
   // for each habit create a monthlyView
   return (
     <>
-      <MonthlyView habit={newHabit}></MonthlyView>
+      <h1 id="today-heading">{todayString}</h1>
+      {renderedMonths}
     </>
   );
 }

@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
+// 8601 format e.g. "2025-11-21"
 type ISODate = string;
 export interface Habit {
 	name: string,
@@ -18,7 +19,14 @@ export interface HabitsState {
 // Define the initial value for the slice state
 const initialState: HabitsState = {
   value: [
-	{name: 'Workout', color: '#f51d1d', logs: []}, 
+	{name: 'Workout', color: '#f51d1d', logs: [
+		'2025-10-05',
+		'2025-10-10',
+		'2025-10-11',
+		'2025-10-15',
+		'2025-10-19',
+		'2025-10-21'
+	]}, 
 	{name: 'Journal', color: '#5aff02', logs: []}
 ],
   status: 'idle'
