@@ -1,0 +1,4 @@
+.cell:hover {
+  --hover-color: oklch(87% 0 0);
+  background-color: var(--hover-color) !important;
+}
