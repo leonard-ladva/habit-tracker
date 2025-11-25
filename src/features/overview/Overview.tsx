@@ -1,5 +1,6 @@
-import { store } from "../../app/store";
+import { useAppSelector } from "@/app/hooks";
 import MonthlyView from "../habits/monthlyView";
+import { selectHabits } from "../habits/habitsSlice";
 
 export interface OverviewProps {
   currentDate: Date;
@@ -16,14 +17,15 @@ function Overview(props: OverviewProps) {
     month: "long",
   });
 
-  const habits = store.getState().habits.value;
+  //   const habits = store.getState().habits.value;
+  const habits = useAppSelector(selectHabits);
   const daysInMonth = daysInAMonth(props.currentDate);
 
   const renderedMonths = habits.map((habit) => (
     <MonthlyView
       habit={habit}
       daysInMonth={daysInMonth}
-	  currentDate={props.currentDate}
+      currentDate={props.currentDate}
       key={habit.name}
     ></MonthlyView>
   ));

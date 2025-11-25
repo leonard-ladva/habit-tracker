@@ -31,7 +31,10 @@ const initialState: HabitsState = {
 ],
   status: 'idle'
 }
-
+export interface logAction {
+	habitName: string,
+	date: string
+}
 // Slices contain Redux reducer logic for updating state, and
 // generate actions that can be dispatched to trigger those updates.
 export const habitsSlice = createSlice({
@@ -47,15 +50,41 @@ export const habitsSlice = createSlice({
 		// find same name habit and replace
 		state.value.push(action.payload)
 	},
-	delete: (state, action: PayloadAction<Habit>) => {
+	remove: (state, action: PayloadAction<Habit>) => {
 		// find same name habit and delete
 		state.value.push(action.payload)
-	}
+	},
+	addLog: (state, action: PayloadAction<logAction>) => {
+		console.log("add 2")
+      const { habitName, date } = action.payload;
+      const habit = state.value.find(h => h.name === habitName);
+      if (!habit) return;
+      if (!habit.logs.includes(date)) habit.logs.push(date);
+    },
+    removeLog: (state, action: PayloadAction<logAction>) => {
+		console.log("remove 2");
+      const { habitName, date } = action.payload;
+      const habit = state.value.find(h => h.name === habitName);
+      if (!habit) return;
+      habit.logs = habit.logs.filter(d => d !== date);
+    }
+	
+  },
+  selectors: {
+	selectHabits: (state) => state.value,
   }
 })
 
-// Export the generated action creators for use in components
-export const { create, update } = habitsSlice.actions
+// export const selectHabits = (state: Root)
+// in a component, or inside the `createSlice.selectors` field.
+// export const selectCount = (state: RootState) => state.counter.value
+// export const selectHabits = (state: RootState) => state.habits.value;
 
+// export const selectHabitByName = (name: string) =>
+//   (state: RootState) => state.habits.value.find(h => h.name === name);
+
+// Export the generated action creators for use in components
+export const { create, update, remove, addLog, removeLog } = habitsSlice.actions
+export const { selectHabits } = habitsSlice.selectors
 // Export the slice reducer for use in the store configuration
 export default habitsSlice.reducer
