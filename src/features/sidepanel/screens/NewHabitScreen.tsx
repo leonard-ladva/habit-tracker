@@ -1,16 +1,16 @@
 import type { ScreenProps } from "./types";
 import "./NewHabitScreen.css";
-import { habitsSlice } from "@/features/habits/habitsSlice";
-import { store } from "@/app/store";
+import { useAppDispatch } from "@/app/hooks";
+import { create } from "@/features/habits/habitsSlice";
 
 function NewHabitScreen(props: ScreenProps) {
+  const dispatch = useAppDispatch();
+
   function submit(formData: FormData) {
     const name = formData.get("name") as string;
     const color = formData.get("color") as string;
-    console.log(name, color);
-    store.dispatch(
-      habitsSlice.actions.create({ name: name, color: color, logs: [] }),
-    );
+
+    dispatch(create({ name: name, color: color, logs: [] }));
     // after submit go to list
     props.goTo("list");
   }

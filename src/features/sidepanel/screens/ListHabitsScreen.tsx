@@ -1,8 +1,9 @@
 import { useAppSelector } from "@/app/hooks";
 import type { ScreenProps } from "./types";
+import { selectHabits } from "@/features/habits/habitsSlice";
 
 function ListHabitsScreen(props: ScreenProps) {
-  const habits = useAppSelector((state) => state.habits.value);
+  const habits = useAppSelector(selectHabits);
 
   const renderedHabits = habits.map((habit) => (
     <li
