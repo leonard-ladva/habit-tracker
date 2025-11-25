@@ -1,6 +1,6 @@
 import { useAppSelector } from "@/app/hooks";
-import MonthlyView from "../habits/monthlyView";
-import { selectHabits } from "../habits/habitsSlice";
+import MonthlyView from "@/features/habits/monthlyView";
+import { selectHabits } from "@/features/habits/habitsSlice";
 
 export interface OverviewProps {
   currentDate: Date;

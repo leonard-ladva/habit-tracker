@@ -1,7 +1,7 @@
 import type { ScreenProps } from "./types";
 import "./NewHabitScreen.css";
-import { habitsSlice } from "../../habits/habitsSlice";
-import { store } from "../../../app/store";
+import { habitsSlice } from "@/features/habits/habitsSlice";
+import { store } from "@/app/store";
 
 function NewHabitScreen(props: ScreenProps) {
   function submit(formData: FormData) {

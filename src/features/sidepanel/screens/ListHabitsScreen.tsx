@@ -1,4 +1,4 @@
-import { useAppSelector } from "../../../app/hooks";
+import { useAppSelector } from "@/app/hooks";
 import type { ScreenProps } from "./types";
 
 function ListHabitsScreen(props: ScreenProps) {
