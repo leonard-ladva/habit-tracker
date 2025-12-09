@@ -1,6 +1,11 @@
 import "./HabitsFormScreen.css";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
-import { create, selectHabitsById, update } from "@/features/habitsSlice";
+import {
+  create,
+  remove,
+  selectHabitsById,
+  update,
+} from "@/features/habitsSlice";
 import { selectEditingId, stopEditing } from "../sidepanelUiSlice";
 
 function HabitsFormScreen() {
@@ -40,9 +45,21 @@ function HabitsFormScreen() {
         <div className="input-box">
           <input type="color" name="color" defaultValue={habit?.color ?? ""} />
         </div>
-        <button type="submit" className="self-center">
-          Save
-        </button>
+        <div className="flex w-full justify-evenly">
+          <button type="submit">Save</button>
+          {habit != null && habit != undefined ? (
+            <button
+              onClick={() => {
+                dispatch(remove(habit));
+                dispatch(stopEditing());
+              }}
+            >
+              Delete
+            </button>
+          ) : (
+            ""
+          )}
+        </div>
       </form>
     </>
   );
