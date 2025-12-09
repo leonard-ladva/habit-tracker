@@ -3,7 +3,7 @@ import "./Sidepanel.css";
 import HabitsListScreen from "./screens/HabitsListScreen";
 import HabitsFormScreen from "./screens/HabitsFormScreen";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
-import { selectMode, setSidepanelMode } from "./sidepanelUiSlice";
+import { selectMode, setSidepanelMode, stopEditing } from "./sidepanelUiSlice";
 
 type SidepanelProps = {
   isOpen: boolean;
@@ -18,6 +18,10 @@ function Sidepanel(props: PropsWithChildren<SidepanelProps>) {
   if (mode === "new" || mode === "edit") {
     screen = <HabitsFormScreen />;
   }
+  const closeSidepanel = () => {
+    dispatch(stopEditing());
+    props.setIsOpen(false);
+  };
 
   return (
     <>
@@ -28,7 +32,7 @@ function Sidepanel(props: PropsWithChildren<SidepanelProps>) {
             ? "pointer-events-auto opacity-100"
             : "pointer-events-none opacity-0"
         }`}
-        onClick={() => props.setIsOpen(false)}
+        onClick={() => closeSidepanel()}
       />
       {/*  sidepanel */}
       <div
@@ -43,9 +47,10 @@ function Sidepanel(props: PropsWithChildren<SidepanelProps>) {
             onClick={() => {
               if (mode === "new" || mode === "edit") {
                 dispatch(setSidepanelMode("list"));
+                dispatch(stopEditing());
                 return;
               }
-              props.setIsOpen(false);
+              closeSidepanel();
             }}
           >
             Back

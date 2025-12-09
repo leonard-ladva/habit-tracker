@@ -74,7 +74,7 @@ export const habitsSlice = createSlice({
 	},
 	selectors: {
 		selectHabits: (state) => state.value,
-		selectHabitsById: (state) => (id: string) => state.value.find(habit => habit.id === id),
+		selectHabitsById: (state, id: string | null) => state.value.find(habit => habit.id === id),
 	}
 })
 

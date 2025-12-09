@@ -32,10 +32,11 @@ export const sidepanelUiSlice = createSlice({
 	},
 	selectors: {
 		selectMode: (state) => state.sidepanelMode,
+		selectEditingId: (state) => state.editingId,
 	}
 })
 
 export const { setSidepanelMode, startEditing, stopEditing } = sidepanelUiSlice.actions;
-export const { selectMode } = sidepanelUiSlice.selectors;
+export const { selectMode, selectEditingId } = sidepanelUiSlice.selectors;
 
 export default sidepanelUiSlice.reducer

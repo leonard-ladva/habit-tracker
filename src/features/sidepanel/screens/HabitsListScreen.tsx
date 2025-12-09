@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { selectHabits } from "@/features/habits/habitsSlice";
-import { setSidepanelMode } from "../sidepanelUiSlice";
+import { setSidepanelMode, startEditing } from "../sidepanelUiSlice";
 
 function HabitsListScreen() {
   const habits = useAppSelector(selectHabits);
@@ -8,7 +8,10 @@ function HabitsListScreen() {
 
   const renderedHabits = habits.map((habit) => (
     <li
-      onClick={() => dispatch(setSidepanelMode("edit"))}
+      onClick={() => {
+        dispatch(setSidepanelMode("edit"));
+        dispatch(startEditing(habit.id));
+      }}
       className="flex h-12 list-none items-center gap-4 border-b border-gray-200 bg-neutral-100 px-4 py-2 text-2xl font-extrabold first:rounded-t-2xl last:rounded-b-2xl last:border-none hover:bg-neutral-200"
       key={habit.name}
     >
