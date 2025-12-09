@@ -40,7 +40,9 @@ function Overview(props: OverviewProps) {
           <p>Add some from the sidepanel</p>
         </>
       ) : (
-        renderedMonths
+        <div className="mx-auto mt-20 grid w-9/12 grid-cols-3 gap-y-10">
+          {renderedMonths}
+        </div>
       )}
     </>
   );
