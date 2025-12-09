@@ -23,16 +23,6 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-// export default () => {
-// 	return { store, persistor }
-// }
-
-// export const store = configureStore({
-//   reducer: {
-// 	habits: habitsReducer,
-// 	sidepanel: sidepanelUiReducer,
-//   },
-// })
 
 // Infer the type of `store`
 export type AppStore = typeof store
