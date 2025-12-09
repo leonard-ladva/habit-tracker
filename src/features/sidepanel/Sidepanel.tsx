@@ -1,9 +1,9 @@
-import { useState, type JSX, type PropsWithChildren } from "react";
+import { type PropsWithChildren } from "react";
 import "./Sidepanel.css";
-import ListHabitsScreen from "./screens/ListHabitsScreen";
-import NewHabitScreen from "./screens/NewHabitScreen";
-import EditHabitScreen from "./screens/EditHabitScreen";
-import type { Screen } from "./screens/types";
+import HabitsListScreen from "./screens/HabitsListScreen";
+import HabitsFormScreen from "./screens/HabitsFormScreen";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import { selectMode, setSidepanelMode } from "./sidepanelUiSlice";
 
 type SidepanelProps = {
   isOpen: boolean;
@@ -11,13 +11,13 @@ type SidepanelProps = {
 };
 
 function Sidepanel(props: PropsWithChildren<SidepanelProps>) {
-  const [screen, setScreen] = useState<Screen>("list");
+  const mode = useAppSelector(selectMode);
+  const dispatch = useAppDispatch();
 
-  const screens: Record<Screen, JSX.Element> = {
-    list: <ListHabitsScreen goTo={setScreen} />,
-    new: <NewHabitScreen goTo={setScreen} />,
-    edit: <EditHabitScreen goTo={setScreen} />,
-  };
+  let screen = <HabitsListScreen />;
+  if (mode === "new" || mode === "edit") {
+    screen = <HabitsFormScreen />;
+  }
 
   return (
     <>
@@ -30,7 +30,7 @@ function Sidepanel(props: PropsWithChildren<SidepanelProps>) {
         }`}
         onClick={() => props.setIsOpen(false)}
       />
-      {/*  idepanel */}
+      {/*  sidepanel */}
       <div
         className={`fixed top-0 right-0 h-full w-2/5 flex-col bg-white shadow-lg transition-transform duration-300 ${
           props.isOpen ? "translate-x-0" : "translate-x-full"
@@ -41,16 +41,16 @@ function Sidepanel(props: PropsWithChildren<SidepanelProps>) {
           <button
             className="back-button"
             onClick={() => {
-              if (screen == "list") {
-                props.setIsOpen(false);
-              } else {
-                setScreen("list");
+              if (mode === "new" || mode === "edit") {
+                dispatch(setSidepanelMode("list"));
+                return;
               }
+              props.setIsOpen(false);
             }}
           >
             Back
           </button>
-          {screens[screen]}
+          {screen}
         </div>
       </div>
     </>

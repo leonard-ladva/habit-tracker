@@ -1,9 +1,8 @@
-import type { ScreenProps } from "./types";
-import "./NewHabitScreen.css";
+import "./HabitsFormScreen.css";
 import { useAppDispatch } from "@/app/hooks";
 import { create } from "@/features/habits/habitsSlice";
 
-function NewHabitScreen(props: ScreenProps) {
+function HabitsFormScreen() {
   const dispatch = useAppDispatch();
 
   function submit(formData: FormData) {
@@ -11,8 +10,6 @@ function NewHabitScreen(props: ScreenProps) {
     const color = formData.get("color") as string;
 
     dispatch(create({ name: name, color: color, logs: [] }));
-    // after submit go to list
-    props.goTo("list");
   }
 
   return (
@@ -42,4 +39,4 @@ function NewHabitScreen(props: ScreenProps) {
   );
 }
 
-export default NewHabitScreen;
+export default HabitsFormScreen;

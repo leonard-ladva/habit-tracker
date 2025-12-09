@@ -1,10 +1,12 @@
 import type { Action, ThunkAction } from '@reduxjs/toolkit'
 import { configureStore } from '@reduxjs/toolkit'
 import habitsReducer from '../features/habits/habitsSlice'
+import sidepanelUiReducer from '../features/sidepanel/sidepanelUiSlice'
 
 export const store = configureStore({
   reducer: {
-	habits: habitsReducer
+	habits: habitsReducer,
+	sidepanel: sidepanelUiReducer,
   },
 })
 
