@@ -1,10 +1,6 @@
 import "./HabitsFormScreen.css";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
-import {
-  create,
-  selectHabitsById,
-  update,
-} from "@/features/habits/habitsSlice";
+import { create, selectHabitsById, update } from "@/features/habitsSlice";
 import { selectEditingId, stopEditing } from "../sidepanelUiSlice";
 
 function HabitsFormScreen() {

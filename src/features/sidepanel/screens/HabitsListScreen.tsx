@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
-import { selectHabits } from "@/features/habits/habitsSlice";
+import { selectHabits } from "@/features/habitsSlice";
 import { setSidepanelMode, startEditing } from "../sidepanelUiSlice";
 
 function HabitsListScreen() {

@@ -1,6 +1,6 @@
 import type { Action, ThunkAction } from '@reduxjs/toolkit'
 import { configureStore } from '@reduxjs/toolkit'
-import habitsReducer from '../features/habits/habitsSlice'
+import habitsReducer from '../features/habitsSlice'
 import sidepanelUiReducer from '../features/sidepanel/sidepanelUiSlice'
 
 export const store = configureStore({

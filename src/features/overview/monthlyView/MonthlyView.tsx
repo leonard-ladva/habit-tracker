@@ -1,6 +1,6 @@
-import "./monthlyView.css";
+import "./MonthlyView.css";
 import type { ReactElement } from "react";
-import { addLog, removeLog, type Habit } from "./habitsSlice";
+import { addLog, removeLog, type Habit } from "../../habitsSlice";
 import { useAppDispatch } from "@/app/hooks";
 
 export interface MonthlyViewProps {
