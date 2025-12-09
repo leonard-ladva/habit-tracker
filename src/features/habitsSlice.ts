@@ -16,20 +16,7 @@ export interface HabitsState {
 }
 
 const initialState: HabitsState = {
-	value: [
-		// {
-		// 	id: 'workout',
-		// 	name: 'Workout', color: '#f51d1d', logs: [
-		// 		'2025-10-05',
-		// 		'2025-10-10',
-		// 		'2025-10-11',
-		// 		'2025-10-15',
-		// 		'2025-10-19',
-		// 		'2025-10-21'
-		// 	]
-		// },
-		// { id: 'journal', name: 'Journal', color: '#5aff02', logs: [] }
-	],
+	value: [],
 }
 export interface logAction {
 	habitName: string,
