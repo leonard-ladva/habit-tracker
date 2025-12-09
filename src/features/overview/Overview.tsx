@@ -34,7 +34,14 @@ function Overview(props: OverviewProps) {
   return (
     <>
       <h1 id="today-heading">{todayString}</h1>
-      {renderedMonths}
+      {renderedMonths.length == 0 ? (
+        <>
+          <h3 className="mt-20 text-3xl font-bold">You have no habits yet</h3>
+          <p>Add some from the sidepanel</p>
+        </>
+      ) : (
+        renderedMonths
+      )}
     </>
   );
 }
